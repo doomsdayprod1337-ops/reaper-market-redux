@@ -1,0 +1,297 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 74% 42%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 74% 42%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 74% 42%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 74% 42%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 0 74% 42%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 74% 42%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 74% 42%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 74% 42%;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 74% 42%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 0 74% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-reaper {
+    font-family: "Orbitron", monospace;
+  }
+
+  .font-horror {
+    font-family: "Creepster", cursive;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-reaper-dark-gray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-reaper-red rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-reaper-red-light;
+  }
+
+  /* Red glow effects */
+  .text-glow-red {
+    text-shadow:
+      0 0 10px #dc2626,
+      0 0 20px #dc2626,
+      0 0 30px #dc2626;
+  }
+
+  .border-glow-red {
+    box-shadow:
+      0 0 10px #dc2626,
+      0 0 20px #dc2626;
+  }
+
+  /* Background patterns */
+  .bg-pattern {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      #dc2626 1px,
+      transparent 0
+    );
+    background-size: 20px 20px;
+    opacity: 0.1;
+  }
+
+  /* Animation keyframes */
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-2px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(2px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 5px #dc2626,
+        0 0 10px #dc2626,
+        0 0 15px #dc2626;
+    }
+    50% {
+      box-shadow:
+        0 0 10px #dc2626,
+        0 0 20px #dc2626,
+        0 0 30px #dc2626;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Custom animations */
+  .shake {
+    animation: shake 0.6s ease-in-out;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Enhanced interactive states */
+  .interactive-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .interactive-hover:hover {
+    @apply scale-105;
+  }
+
+  .interactive-hover:active {
+    @apply scale-95;
+  }
+
+  /* Smooth focus rings */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-reaper-red/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(220, 38, 38, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Nuclear explosion warning animations */
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  /* Apply animations globally */
+  .pulse-animation {
+    animation: pulse 1s infinite;
+  }
+  .blink-animation {
+    animation: blink 0.5s infinite;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .mobile-optimized {
+      @apply text-sm px-3 py-2;
+    }
+
+    .mobile-spacing {
+      @apply space-y-3;
+    }
+  }
+}
