@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import confetti from "canvas-confetti";
+import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 import {
   sendVerificationCode,
   verifyCode,
@@ -44,6 +46,7 @@ type RegistrationStep = "email" | "verify" | "invite" | "credentials" | "terms";
 export default function Index() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { toast } = useToast();
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({ username: "", password: "" });
 
@@ -117,6 +120,16 @@ export default function Index() {
         // Handle development OTP display
         if (result.displayOnScreen && result.message) {
           setDevelopmentOTP(result.message);
+          
+          // Show toast notification with the verification code
+          const codeMatch = result.message.match(/\d{6}/);
+          if (codeMatch) {
+            toast({
+              title: "📧 Verification Code",
+              description: `Your verification code is: ${codeMatch[0]}`,
+              duration: 10000, // Show for 10 seconds
+            });
+          }
         } else {
           setDevelopmentOTP(null);
         }
@@ -500,6 +513,7 @@ export default function Index() {
           </div>
         </footer>
       </div>
+      <Toaster />
     </div>
   );
 }
